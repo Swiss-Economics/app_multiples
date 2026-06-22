@@ -1,0 +1,24 @@
+app = 'app_TV_EN'
+primary_region = "fra"
+ 
+[build]
+
+[http_service]
+  auto_start_machines = true
+  auto_stop_machines = "suspend" 
+  force_https = true
+  internal_port = 8501
+  min_machines_running = 0 
+  processes = ["app"]
+
+  [[http_service.checks]]
+    grace_period = "20s" # Erhöht, damit der "Kaltstart" nicht abgebrochen wird
+    interval = "30s"
+    method = "GET"
+    path = "/_stcore/health"
+    timeout = "2s"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512 # Kostensparende 512MB RAM
