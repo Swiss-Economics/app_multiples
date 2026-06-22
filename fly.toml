@@ -1,4 +1,4 @@
-app = 'app_TV_EN'
+app = 'app_multiples'
 primary_region = "fra"
  
 [build]
